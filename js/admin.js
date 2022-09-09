@@ -86,7 +86,7 @@ function crearLista(producto){
       <button class="btn btn-warning" >
         <i class="bi bi-pencil-square"></i>
       </button>
-      <button class="btn btn-danger">
+      <button class="btn btn-danger" onclick='borrarProducto("${producto.codigo}")'>
         <i class="bi bi-x-square"></i>
       </button>
     </td>
@@ -97,4 +97,25 @@ function crearLista(producto){
 function guardarProductosEnLocalStorage(){
     localStorage.setItem('listaProductosKey', JSON.stringify(listaProductos));
 }
+
+window.borrarProducto = function (codigo){
+  console.log(codigo)
+  //buscar el producto y borrar
+let copiaListaProductos = listaProductos.filter((itemProducto)=>itemProducto.codigo != codigo)
+console.log(copiaListaProductos);
+listaProductos = copiaListaProductos;
+  //actualizar localStoage
+guardarProductosEnLocalStorage();
+  //actualizar tabla
+  borrarTabla();
+  cargaInicial();
+}
+
+function borrarTabla(){
+  let tablaProductos = document.querySelector('#tablaProductos');
+  tablaProductos.innerHTML = '';
+}
+
+
+
 cargaInicial();
