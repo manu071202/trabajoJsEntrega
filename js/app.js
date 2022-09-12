@@ -1,3 +1,4 @@
+
 // import { validarEmail } from "./validaciones";
 
 // const email = document.getElementById("email").value
@@ -15,6 +16,7 @@
 //             footer: '<a href="">Why do I have this issue?</a>'
 //           })
 //     }
+
 
 //Comprueba si el localStorage tiene datos
 let listaProductos =

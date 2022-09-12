@@ -225,3 +225,25 @@ function actualizarProducto() {
   //limpiar el formulario
   limpiarFormulario();
 }
+
+
+window.borrarProducto = function (codigo){
+  console.log(codigo)
+  //buscar el producto y borrar
+let copiaListaProductos = listaProductos.filter((itemProducto)=>itemProducto.codigo != codigo)
+console.log(copiaListaProductos);
+listaProductos = copiaListaProductos;
+  //actualizar localStoage
+guardarProductosEnLocalStorage();
+  //actualizar tabla
+  borrarTabla();
+  cargaInicial();
+}
+
+function borrarTabla(){
+  let tablaProductos = document.querySelector('#tablaProductos');
+  tablaProductos.innerHTML = '';
+}
+
+cargaInicial();
+
