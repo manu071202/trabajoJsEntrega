@@ -1,3 +1,4 @@
+
 // import { validarEmail } from "./validaciones";
 
 // const email = document.getElementById("email").value
@@ -15,3 +16,7 @@
 //             footer: '<a href="">Why do I have this issue?</a>'
 //           })
 //     }
+
+//     }
+// } 
+
