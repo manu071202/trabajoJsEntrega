@@ -1,9 +1,13 @@
 *{
-    margin: 0px;
-    padding: 0px ;
-    }
-    
-    .cardBtn{
+    padding: 0;
+    margin: 0;
+}
+
+#linkAdmin{
+    text-decoration: none;
+}
+
+ .cardBtn{
         background-color: #074f55 ;
     }
     .body{
@@ -13,3 +17,4 @@
         background-color: #3a6a6f ;
     
     }
+
