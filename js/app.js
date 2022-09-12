@@ -17,6 +17,72 @@
 //           })
 //     }
 
-//     }
-// } 
 
+//Comprueba si el localStorage tiene datos
+let listaProductos =
+  JSON.parse(localStorage.getItem("listaProductosKey")) || [];
+let grillaProductos = document.getElementById("grillaProductos");
+let carritoContainer = document.getElementById("carritoContainer")
+//Comprueba si listaProductos tiene algo
+if (listaProductos.length > 0) {
+  //Si es true maqueta las cards
+  listaProductos.map((producto) => {
+    crearColumna(producto);
+  });
+} else {
+  grillaProductos.innerHTML = `<h1 class="display-1 fw-bold m-5 text-center">Por el momento no se encuentran productos en la tienda</h1>
+  <h2 class="display-2 fw-bold mb-5">Por favor vuelva a ingresar mas tarde</h2>`
+}
+
+function crearColumna(producto) {
+  // Maqueta cada card que se encuentre en el la lista
+  grillaProductos.innerHTML += `
+  <article class="card m-2 p-1" style="width: 15rem;">
+  <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
+  <div class="card-body">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">${producto.nombre}</li>
+      <li class="list-group-item">${producto.cantidad}</li>
+      <li class="list-group-item">$ ${producto.precio}</li>
+    </ul>
+    <button class="col-12 btn btn-danger agregarCarro" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+      Agregar
+    </button>
+  </div>
+</article>`;
+}
+let listaProductosCarrito = [];
+
+//Funcion para agregar producto al carrito
+function agregarAlCarro(productoCarro) {
+  let productoAgregado = listaProductos.find(
+    (producto) => producto.codigo === productoCarro
+  );
+  //Comprueba que el producto no se encuentre ya en la lista del carrito 
+  if (!listaProductosCarrito.includes(productoAgregado)) {
+    listaProductosCarrito.push(productoAgregado);
+    carritoContainer.innerHTML += `<article class="d-flex ">
+    <div class="w-25 me-4">
+      <img class="w-100" src="${productoAgregado.imagen}" alt="${productoAgregado.nombre}">
+    </div>
+    <div>
+      <h5 class="h4 mb-0">${productoAgregado.nombre}</h5>
+      <p class="ms-1 mb-0">$${productoAgregado.precio}</p>
+      <div class="d-flex align-items-center ms-1 ">
+        <button type="button" class="btn btn-danger p-0 px-1 border-0"><i class="bi bi-arrow-left"></i></button>
+        <p class="fs-5 mb-0 mx-1">${productoAgregado.cantidad}</p>
+        <button type="button" class="btn btn-danger p-0 px-1 border-0"><i class="bi bi-arrow-right"></i></i></button>
+      </div>
+    </div>
+  </article>
+  <hr>`
+  }
+}
+
+// function verDetalle(codigo) {
+//   console.log(codigo);
+//   console.log(window.location);
+//   console.log(window.location.origin + "/pages/detalle.html?codigo=" + codigo);
+//   window.location.href =
+//     window.location.origin + "/pages/detalle.html?codigo=" + codigo;
+// }
