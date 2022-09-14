@@ -12,6 +12,8 @@ let grillaLimpieza = document.getElementById("grillaLimpieza");
 let grillaCuidadoPersonal = document.getElementById("grillaCuidadoPersonal");
 let grillaMascotas = document.getElementById("grillaMascotas");
 let carritoContainer = document.getElementById("carritoContainer");
+let precioTotalCompra = 0;
+let total = document.getElementById("total");
 
 //Comprueba si listaProductos tiene algo
 if (listaProductos.length > 0) {
@@ -30,7 +32,7 @@ function maquetadoProducto(producto) {
   let categoria = producto.categoria;
   //Maqueta todos los productos de la lista
   grillaTodos.innerHTML += `
-  <article class="card m-2 p-1 flex-nowrap " style="width: 12rem;">
+  <article class="card m-2 p-1 flex-nowrap articulo" style="width: 12rem;">
   <img src="${producto.imagen}" class="card-img-top   d-sm-flex" alt="${producto.nombre}">
   <div class="card-body">
     <ul class="list-group list-group-flush">
@@ -47,136 +49,136 @@ function maquetadoProducto(producto) {
   switch (categoria) {
     case "Almacen":
       {
-        grillaAlmacen.innerHTML += `<article class="card m-2 p-1" style="width: 15rem;">
+        grillaAlmacen.innerHTML += `<article class=" articulo card m-2 p-1" style="width: 15rem;">
         <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-truncate"><strong>${producto.nombre}</strong><br>${producto.descripcion}</li>
             <li class="list-group-item fs-5 fw-bold">$ ${producto.precio}</li>
           </ul>
-          <button class="col-12 btn btn-outline-danger agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+          <button class="col-12 btn btn-outline-secondary agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
             Agregar
           </button>
-          <button class="btn btn-outline-danger " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
+          <button class="btn btn-outline-secondary " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
         </div>
       </article>`;
       }
       break;
     case "Bebidas":
       {
-        grillaBebidas.innerHTML += `<article class="card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
+        grillaBebidas.innerHTML += `<article class="articulo card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
         <img src="${producto.imagen}" class="card-img-top   d-sm-flex" alt="${producto.nombre}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-truncate"><strong>${producto.nombre}</strong><br>${producto.descripcion}</li>
             <li class="list-group-item fs-5 fw-bold">$ ${producto.precio}</li>
           </ul>
-          <button class="col-12 btn btn-outline-danger agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+          <button class="col-12 btn btn-outline-secondary agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
             Agregar
           </button>
-          <button class="btn btn-outline-danger " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
+          <button class="btn btn-outline-secondary " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
         </div>
       </article>`;
       }
       break;
     case "Frutas y Verduras":
       {
-        grillaFrutasVerduras.innerHTML += `<article class="card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
+        grillaFrutasVerduras.innerHTML += `<article class="articulo card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
         <img src="${producto.imagen}" class="card-img-top   d-sm-flex" alt="${producto.nombre}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-truncate"><strong>${producto.nombre}</strong><br>${producto.descripcion}</li>
             <li class="list-group-item fs-5 fw-bold">$ ${producto.precio}</li>
           </ul>
-          <button class="col-12 btn btn-outline-danger agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+          <button class="col-12 btn btn-outline-secondary agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
             Agregar
           </button>
-          <button class="btn btn-outline-danger " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
+          <button class="btn btn-outline-secondary " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
         </div>
       </article>`;
       }
       break;
     case "Congelados":
       {
-        grillaCongelados.innerHTML += `<article class="card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
+        grillaCongelados.innerHTML += `<article class="card articulo m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
         <img src="${producto.imagen}" class="card-img-top   d-sm-flex" alt="${producto.nombre}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-truncate"><strong>${producto.nombre}</strong><br>${producto.descripcion}</li>
             <li class="list-group-item fs-5 fw-bold">$ ${producto.precio}</li>
           </ul>
-          <button class="col-12 btn btn-outline-danger agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+          <button class="col-12 btn btn-outline-secondary agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
             Agregar
           </button>
-          <button class="btn btn-outline-danger " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
+          <button class="btn btn-outline-secondary " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
         </div>
       </article>`;
       }
       break;
     case "Panaderia":
       {
-        grillaPanaderia.innerHTML += `<article class="card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
+        grillaPanaderia.innerHTML += `<article class="articulo card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
         <img src="${producto.imagen}" class="card-img-top   d-sm-flex" alt="${producto.nombre}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-truncate"><strong>${producto.nombre}</strong><br>${producto.descripcion}</li>
             <li class="list-group-item fs-5 fw-bold">$ ${producto.precio}</li>
           </ul>
-          <button class="col-12 btn btn-outline-danger agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+          <button class="col-12 btn btn-outline-secondary agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
             Agregar
           </button>
-          <button class="btn btn-outline-danger " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
+          <button class="btn btn-outline-secondary " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
         </div>
       </article>`;
       }
       break;
     case "Limpieza":
       {
-        grillaLimpieza.innerHTML += `<article class="card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
+        grillaLimpieza.innerHTML += `<article class="articulo card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
         <img src="${producto.imagen}" class="card-img-top   d-sm-flex" alt="${producto.nombre}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-truncate"><strong>${producto.nombre}</strong><br>${producto.descripcion}</li>
             <li class="list-group-item fs-5 fw-bold">$ ${producto.precio}</li>
           </ul>
-          <button class="col-12 btn btn-outline-danger agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+          <button class="col-12 btn btn-outline-secondary agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
             Agregar
           </button>
-          <button class="btn btn-outline-danger " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
+          <button class="btn btn-outline-secondary " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
         </div>
       </article>`;
       }
       break;
     case "Cuidado Personal":
       {
-        grillaCuidadoPersonal.innerHTML += `<article class="card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
+        grillaCuidadoPersonal.innerHTML += `<article class="articulo card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
         <img src="${producto.imagen}" class="card-img-top   d-sm-flex" alt="${producto.nombre}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-truncate"><strong>${producto.nombre}</strong><br>${producto.descripcion}</li>
             <li class="list-group-item fs-5 fw-bold">$ ${producto.precio}</li>
           </ul>
-          <button class="col-12 btn btn-outline-danger agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+          <button class="col-12 btn btn-outline-secondary agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
             Agregar
           </button>
-          <button class="btn btn-outline-danger " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
+          <button class="btn btn-outline-secondary " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
         </div>
       </article>`;
       }
       break;
     case "Mascotas":
       {
-        grillaMascotas.innerHTML += `<article class="card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
+        grillaMascotas.innerHTML += `<article class="articulo card m-2 p-1 d-inline-block d-sm-flex flex-nowrap" style="width: 15rem;">
         <img src="${producto.imagen}" class="card-img-top   d-sm-flex" alt="${producto.nombre}">
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-truncate"><strong>${producto.nombre}</strong><br>${producto.descripcion}</li>
             <li class="list-group-item fs-5 fw-bold">$ ${producto.precio}</li>
           </ul>
-          <button class="col-12 btn btn-outline-danger agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
+          <button class="col-12 btn btn-outline-secondary agregarCarro mb-1" type="button" onclick='agregarAlCarro("${producto.codigo}")'>
             Agregar
           </button>
-          <button class="btn btn-outline-danger " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
+          <button class="btn btn-outline-secondary " type="button" onclick="verDetalle('${producto.codigo}')"><i class="bi bi-file-text"></i></button>
         </div>
       </article>`;
       }
@@ -193,6 +195,8 @@ function maquetadoCarrito() {
     listaCarrito.map((producto) => {
       maquetadoProdCarrito(producto);
     });
+  } else {
+    total.innerHTML = "0";
   }
 }
 
@@ -210,9 +214,10 @@ function agregarAlCarro(productoCarro) {
   );
   //Si el producto no se encuentra en la lista lo agrega
   if (produtoEstaEnCarrito === -1) {
-    productoAgregado.cantidad = 1;
+    productoAgregado.stock = 1;
     productoAgregado.precioTotal =
-      productoAgregado.cantidad * productoAgregado.precio;
+      productoAgregado.stock * productoAgregado.precio;
+    precioTotalCompra += productoAgregado.precioTotal;
     listaCarrito.push(productoAgregado);
     guardarCarritoEnLocalStorage();
   }
@@ -233,28 +238,30 @@ function maquetadoProdCarrito(producto) {
         <div class="w-50">
           <h5 class="h3 fw-bolder mb-0">${producto.nombre}</h5>
           <div class="d-flex align-items-center ms-1 ">
-          <p class=" fs-4 mb-0 me-1">Cantidad:</p>
-            <button type="button" class="btn btn-danger p-0 px-1 border-0" onclick='restarCantCarrito("${producto.codigo}")'><i class="bi bi-arrow-left"></i></button>
-            <p class="mb-0 mx-1 border border-1 px-3">${producto.cantidad}</p>
-            <button type="button" class="btn btn-danger p-0 px-1 border-0" onclick='sumarCantCarrito("${producto.codigo}")'><i class="bi bi-arrow-right"></i></i></button>
+          <p class=" fs-4 mb-0 me-1">Stock:</p>
+            <button type="button" class="btn btn-outline-dark p-0 px-1 border-0" onclick='restarCantCarrito("${producto.codigo}")'><i class="bi bi-arrow-left"></i></button>
+            <p class="mb-0 mx-1 border border-1 px-3">${producto.stock}</p>
+            <button type="button" class="btn btn-outline-dark p-0 px-1 border-0" onclick='sumarCantCarrito("${producto.codigo}")'><i class="bi bi-arrow-right"></i></i></button>
           </div>
           <p class="fs-4 ms-1 mb-0">$${producto.precioTotal}</p>
         </div>
         <div class="w-25">
-        <button type="button" class="btn btn-danger ms-5" onclick='borrarDeCarrito("${producto.codigo}")'><i class="bi bi-x-square"></i>
+        <button type="button" class="btn ms-5" onclick='borrarDeCarrito("${producto.codigo}")'><i class="bi bi-x-square"></i>
         </div>
       </article>
       <hr>`;
+  total.innerHTML = `${precioTotalCompra}`;
 }
 
 function restarCantCarrito(codigoBuscado) {
   let productoBuscado = listaCarrito.find(
     (producto) => producto.codigo === codigoBuscado
   );
-  if (productoBuscado.cantidad > 1) {
-    productoBuscado.cantidad--;
+  if (productoBuscado.stock > 1) {
+    productoBuscado.stock--;
     productoBuscado.precioTotal =
-      productoBuscado.cantidad * productoBuscado.precio;
+      productoBuscado.stock * productoBuscado.precio;
+    precioTotalCompra -= parseInt(productoBuscado.precio);
     guardarCarritoEnLocalStorage();
   }
 
@@ -265,9 +272,9 @@ function sumarCantCarrito(codigoBuscado) {
   let productoBuscado = listaCarrito.find(
     (producto) => producto.codigo === codigoBuscado
   );
-  productoBuscado.cantidad++;
-  productoBuscado.precioTotal =
-    productoBuscado.cantidad * productoBuscado.precio;
+  productoBuscado.stock++;
+  productoBuscado.precioTotal = productoBuscado.stock * productoBuscado.precio;
+  precioTotalCompra += parseInt(productoBuscado.precio);
   guardarCarritoEnLocalStorage();
 
   maquetadoCarrito();
@@ -277,7 +284,12 @@ function borrarDeCarrito(codigo) {
   let copiaListaCarrito = listaCarrito.filter(
     (producto) => producto.codigo != codigo
   );
+  let productoBuscado = listaCarrito.find(
+    (producto) => producto.codigo === codigo
+  );
+  precioTotalCompra -= productoBuscado.precioTotal;
   listaCarrito = copiaListaCarrito;
+
   //Actualizar el localstorage
   guardarCarritoEnLocalStorage();
   //Actualizar la tabla
