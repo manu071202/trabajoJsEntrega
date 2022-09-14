@@ -4,8 +4,7 @@
 Proyecto realizado con CSS y HTML, JS. Para guardar los productos utilizamos el LocalStorage y para inciar la sesion utilizamos SessionStorage
 
 ## Accede a la demo desde el siguiente link demo 
-Supermercado Rolling 
-<!-- falta poner el link ya terminado -->
+[Supermercado Rolling](https://supermercadorolling.netlify.app/)
 ## Librerias Utilizadas 
 -[Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 -[ObejetoUUVID](https://www.npmjs.com/package/uuid)  
