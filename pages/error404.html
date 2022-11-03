@@ -38,6 +38,16 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
                 <a
+            type="button"
+            class="d-none"
+            id="btnAdministrador"
+            href="administrador.html"
+          >
+            Administrador
+        </a>
+      </li>
+              <li class="nav-item">
+                <a
                   class="nav-link active text-light"
                   aria-current="page"
                   href="/pages/error404.html"
@@ -58,12 +68,6 @@
                 aria-label="Search"
                 id="buscador"
               />
-              <button
-                class="btn btn-outline-success btn-outline-light"
-                type="submit"
-              >
-                Buscador
-              </button>
             </form>
           </div>
           <div>
@@ -76,6 +80,13 @@
               id="btnIdentificar"
             >
               Identificarse
+            </button>
+            <button
+              type="button"
+              class="d-none"
+              id="btnCerrarSesion"
+            >
+              Cerrar sesion
             </button>
 
             <div
@@ -262,5 +273,6 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/sesion.js"></script>
   </body>
 </html>

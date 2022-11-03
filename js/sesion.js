@@ -1,3 +1,4 @@
+let pagina = window.location.pathname;
 const btnAdministrador =  document.getElementById("btnAdministrador")
 const btnCerrarSesion = document.getElementById("btnCerrarSesion")
 const btnIdentificar = document.getElementById("btnIdentificar")
@@ -93,21 +94,34 @@ if(usuarioActivo !== []){
   btnCerrarSesion.className="d-none";
 }
 
+
 function ingresar() {
+  
   let rol = sessionStorage.getItem("rolUsuarioActivo");
   localStorage.setItem("usuarioActivoKey", JSON.stringify(rol))
 
-  switch (rol) {
-    case "1":
-      window.location.href = "./pages/administrador.html";
-      break;
-    case "2":
-      window.location.href = "index.html";
-      limpiarFormulario();
-
-      break;
-  }
-}
+  if(pagina === "/index.html"){
+    switch (rol) {
+      case "1":
+        window.location.href = "./pages/administrador.html";
+        break;
+        case "2":
+          window.location.href = "index.html";
+          limpiarFormulario();
+          break;
+        }
+      }else {
+        switch (rol) {
+          case "1":
+            window.location.href = "administrador.html";
+            break;
+            case "2":
+              window.location.href = "../index.html";
+              limpiarFormulario();
+              break;
+            }
+      }
+    }
 
 function limpiarFormulario() {
   formularioDeIngreso.reset();
