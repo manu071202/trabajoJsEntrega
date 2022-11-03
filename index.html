@@ -40,6 +40,16 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
                 <a
+            type="button"
+            class="d-none"
+            id="btnAdministrador"
+            href="/pages/administrador.html"
+          >
+            Administrador
+        </a>
+      </li>
+              <li class="nav-item">
+                <a
                   class="nav-link active text-light"
                   aria-current="page"
                   href="/pages/error404.html"
@@ -47,6 +57,7 @@
                   Lista de Deseos
                   </a
                 >
+               
               </li>
               <li class="nav-item">
                 <a class="nav-link text-light" href="/pages/error404.html">Productos</a>
@@ -73,6 +84,7 @@
             </form>
           </div>
           <div >
+            
             <button
               type="button"
               class="btn btn-outline-light text-white"
@@ -83,6 +95,15 @@
             >
               Identificarse
             </button>
+            <button
+            type="button"
+            class="d-none"
+            onclick="cerrarSesion()"
+            id="btnCerrarSesion"
+          >
+            Cerrar sesion
+          </button>
+          
 
             <div
               class="modal fade"

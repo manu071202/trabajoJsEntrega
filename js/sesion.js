@@ -1,3 +1,30 @@
+const btnAdministrador =  document.getElementById("btnAdministrador")
+const btnCerrarSesion = document.getElementById("btnCerrarSesion")
+const btnIdentificar = document.getElementById("btnIdentificar")
+
+let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivoKey"))
+
+  const cerrarSesion = () => {
+    Swal.fire({
+      title: 'Estas seguro que deseas cerrar sesion?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Cerrar sesion'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("usuarioActivoKey");
+        btnIdentificar.className="btn btn-outline-light text-white"
+        btnCerrarSesion.className="d-none";
+        btnAdministrador.className="d-none";
+        
+      }
+    })
+  }
+
+
+
 function obtenerListaUsuario() {
   let listaUsuario = JSON.parse(localStorage.getItem("listaUsuarioLs"));
   if (listaUsuario == null) {
@@ -9,6 +36,8 @@ function obtenerListaUsuario() {
 
   return listaUsuario;
 }
+
+
 function validar(correo, contraseña) {
   let listaUsuario = obtenerListaUsuario();
   let accesso = false;
@@ -29,6 +58,10 @@ function validar(correo, contraseña) {
 document
   .querySelector("#btnIngresar")
   .addEventListener("click", iniciarSession);
+
+
+
+
 function iniciarSession() {
   let correoIngresado = "";
   let contraseñaIngresada = "";
@@ -46,8 +79,24 @@ function iniciarSession() {
     limpiarFormulario();
   }
 }
+
+if(usuarioActivo !== []){
+  btnCerrarSesion.className="btn btn-outline-light text-white"
+  btnIdentificar.className="d-none";
+  if(usuarioActivo == 1) {
+  btnAdministrador.className="btn btn-outline-light text-white"
+  } else {
+    btnAdministrador.className="d-none"
+  } 
+} if(usuarioActivo === null) {
+  btnIdentificar.className="btn btn-outline-light text-white"
+  btnCerrarSesion.className="d-none";
+}
+
 function ingresar() {
   let rol = sessionStorage.getItem("rolUsuarioActivo");
+  localStorage.setItem("usuarioActivoKey", JSON.stringify(rol))
+
   switch (rol) {
     case "1":
       window.location.href = "./pages/administrador.html";
