@@ -3,6 +3,7 @@ const btnAdministrador =  document.getElementById("btnAdministrador")
 const btnCerrarSesion = document.getElementById("btnCerrarSesion")
 const btnIdentificar = document.getElementById("btnIdentificar")
 
+
 let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivoKey"))
 
   const cerrarSesion = () => {
@@ -23,6 +24,8 @@ let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivoKey"))
       }
     })
   }
+btnCerrarSesion.addEventListener("click", cerrarSesion)
+
 
 
 

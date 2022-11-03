@@ -40,6 +40,16 @@
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
                 <a
+            type="button"
+            class="d-none"
+            id="btnAdministrador"
+            href="administrador.html"
+          >
+            Administrador
+        </a>
+      </li>
+              <li class="nav-item">
+                <a
                   class="nav-link active text-light"
                   aria-current="page"
                   href="/pages/error404.html"
@@ -60,12 +70,7 @@
                 aria-label="Search"
                 id="buscador"
               />
-              <button
-                class="btn btn-outline-success btn-outline-light"
-                type="submit"
-              >
-                Buscador
-              </button>
+             
             </form>
           </div>
           <div>
@@ -79,6 +84,21 @@
             >
               Identificarse
             </button>
+            <button
+            type="button"
+            class="d-none"
+            id="btnCerrarSesion"
+          >
+            Cerrar sesion
+          </button>
+
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
 
             <div
               class="modal fade"
@@ -258,11 +278,15 @@
         <article></article>
       </section>
     </footer>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
    <script src="/js/detalle.js"></script>
+   <script src="../js/sesion.js"></script>
+
   </body>
 </html>
